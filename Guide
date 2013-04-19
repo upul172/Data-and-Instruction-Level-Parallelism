@@ -1,0 +1,10 @@
+Follow the steps given in this document in order to run the project
+
+	1. Install simplescalar(if it is not installed in the system)
+		- Open a terminal and go to the project folder
+		- run ./Install-SimpleScalar.sh (if the Install-SimpleScalar.sh is not executale make it execuatble by chmod +x Install-SimpleScalar.sh)
+	
+	2. Generate the MIPS assembly code by running configure.sh
+		- ./configure.sh
+		
+	 
