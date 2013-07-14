@@ -69,15 +69,21 @@ def identify_loop(array,index):
                     return i
     return -1
 
-#this function is to count number of input in a particular instruction
+#this function is to count number of inputs in a particular instruction
 #if the instruction is a special type of instruction(like lw sw)it will return the name of the instruction
 #if the the given instruction is not a special instruction or a instruction which can be calculated the number of inputs, then it will return 'else'
 
 def count_inputs(instr):
-    #tobe implemented
-    if instr[START_INSTR]=='lw' or instr[START_INSTR]=='sw': #add the other instructions here to count inputs
-        return instr[START_INSTR]
-    elif 
+    count = 0
+
+    if instr[1] == 0 : #add the other instructions here to count inputs
+        count == instr[START_INSTR]
+    elif instr[1] == 1 :
+        count == 1
+    elif instr[1] == 2 :
+        count == 2
+
+    return count
         
     
 
