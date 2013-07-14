@@ -1,7 +1,7 @@
 #this file contains the common components of the program
 
 #index of the start of the instruction
-START_INSTR = 2
+START_INSTR = 3
 
 #TYPES OF CODE LINE IN THE PROGRAM
 #---------------------------------

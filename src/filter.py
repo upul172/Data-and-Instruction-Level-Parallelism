@@ -97,7 +97,8 @@ def filter_line(instr):
             oplist.append(re.sub('[ ]','',m[1])) #operand 2
             oplist.append(re.sub('[ ]','',m[2])) #operand 3
             oplist.append(op[1])
-            print n
+            oplist[1] = 2
+            print oplist[1]
             
             
     #filter count leading instruction (CLO, CLZ)
@@ -112,7 +113,8 @@ def filter_line(instr):
             oplist.append(re.sub('[ ]','',m[0])) #operand 1
             oplist.append(re.sub('[ ]','',m[1])) #operand 2
             oplist.append(op[1])
-            print m[0]
+            oplist[1] = 1
+            print oplist[1]
             
     
     #filter move instruction (MOVE)
@@ -127,7 +129,8 @@ def filter_line(instr):
             oplist.append(re.sub('[ ]','',m[0])) #operand 1
             oplist.append(re.sub('[ ]','',m[1])) #operand 2
             oplist.append(op[1])
-            print n[0]
+            oplist[1] = 1
+            print oplist[1]
             
     #filter ......... instruction (NEGU)
     elif re.search(r'^[\t ]*negu.*',instr):
@@ -141,7 +144,8 @@ def filter_line(instr):
             oplist.append(re.sub('[ ]','',m[0])) #operand 1
             oplist.append(re.sub('[ ]','',m[1])) #operand 2
             oplist.append(op[1])
-            print n[0]
+            oplist[1] = 1
+            print oplist[1]
             
     #filter ..... instruction (SEB)
     elif re.search(r'^[\t ]*seb.*',instr):
@@ -155,7 +159,8 @@ def filter_line(instr):
             oplist.append(re.sub('[ ]','',m[0])) #operand 1
             oplist.append(re.sub('[ ]','',m[1])) #operand 2
             oplist.append(op[1])
-            print n[0]
+            oplist[1] = 1
+            print oplist[1]
             
     #filter ...... instruction (SEH)
     elif re.search(r'^[\t ]*seh.*',instr):
@@ -169,7 +174,8 @@ def filter_line(instr):
             oplist.append(re.sub('[ ]','',m[0])) #operand 1
             oplist.append(re.sub('[ ]','',m[1])) #operand 2
             oplist.append(op[1])
-            print n[0]
+            oplist[1] = 1
+            print oplist[1]
 
     #filter ...... instruction (SUB, SUBU)
     elif re.search(r'^[\t ]*sub.*',instr):
@@ -184,7 +190,8 @@ def filter_line(instr):
             oplist.append(re.sub('[ ]','',m[1])) #operand 2
             oplist.append(re.sub('[ ]','',m[2])) #operand 3
             oplist.append(op[1])
-            print n[0]
+            oplist[1] = 2
+            print oplist[1]
             
     #filter ...... instruction (LA)
     elif re.search(r'^[\t ]*la.*',instr):
@@ -198,7 +205,8 @@ def filter_line(instr):
             oplist.append(re.sub('[ ]','',m[0])) #operand 1
             oplist.append(re.sub('[ ]','',m[1])) #operand 2
             oplist.append(op[1])
-            print n[0]
+            oplist[1] = 1
+            print oplist[1]
 
     #filter ...... instruction (LI)
     elif re.search(r'^[\t ]*li.*',instr):
@@ -212,7 +220,8 @@ def filter_line(instr):
             oplist.append(re.sub('[ ]','',m[0])) #operand 1
             oplist.append(re.sub('[ ]','',m[1])) #operand 2
             oplist.append(op[1])
-            print n[0]
+            oplist[1] = 1
+            print oplist[1]
             
     #filter ...... instruction (LUI)
     elif re.search(r'^[\t ]*lui.*',instr):
@@ -226,7 +235,8 @@ def filter_line(instr):
             oplist.append(re.sub('[ ]','',m[0])) #operand 1
             oplist.append(re.sub('[ ]','',m[1])) #operand 2
             oplist.append(op[1])
-            print n[0]
+            oplist[1] = 1
+            print oplist[1]
 
 
     # Shift and rotate
@@ -245,7 +255,8 @@ def filter_line(instr):
             oplist.append(re.sub('[ ]','',m[1])) #operand 2
             oplist.append(re.sub('[ ]','',m[2])) #operand 3
             oplist.append(op[1])
-            print n[0]
+            oplist[1] = 2
+            print oplist[1]
 
 
     #filter SLL shift operation instruction (sll, sllv)
@@ -262,7 +273,8 @@ def filter_line(instr):
             oplist.append(re.sub('[ ]','',m[1])) #operand 2
             oplist.append(re.sub('[ ]','',m[2])) #operand 3
             oplist.append(op[1])
-            print n[0]
+            oplist[1] = 2
+            print oplist[1]
 
 
     #filter SRL shift operation instruction (sll, sllv)
@@ -279,7 +291,8 @@ def filter_line(instr):
             oplist.append(re.sub('[ ]','',m[1])) #operand 2
             oplist.append(re.sub('[ ]','',m[2])) #operand 3
             oplist.append(op[1])
-            print n[0]
+            oplist[1] = 2
+            print oplist[1]
 
 
     # Logic and bit-field
@@ -297,7 +310,8 @@ def filter_line(instr):
             oplist.append(re.sub('[ ]','',m[1])) #operand 2
             oplist.append(re.sub('[ ]','',m[2])) #operand 3
             oplist.append(op[1])
-            print n[0]
+            oplist[1] = 2
+            print oplist[1]
 
     # NOP
     elif re.search(r'^[\t ]*nop.*',instr):
@@ -305,7 +319,8 @@ def filter_line(instr):
         m = re.search(r'nop.*',instr)
         n = m.group().partition('\t')
         oplist.append(n[0])
-        print oplist[3]
+        oplist[1] = 0
+        print oplist[1]
 
     # NOR
     elif re.search(r'^[\t ]*nor.*',instr):
@@ -320,7 +335,8 @@ def filter_line(instr):
             oplist.append(re.sub('[ ]','',m[1])) #operand 2
             oplist.append(re.sub('[ ]','',m[2])) #operand 3
             oplist.append(op[1])
-            print n[0]
+            oplist[1] = 2
+            print oplist[1]
 
     # NOT
     elif re.search(r'^[\t ]*not.*',instr):
@@ -334,7 +350,8 @@ def filter_line(instr):
             oplist.append(re.sub('[ ]','',m[0])) #operand 1
             oplist.append(re.sub('[ ]','',m[1])) #operand 2
             oplist.append(op[1])
-            print n[0]
+            oplist[1] = 1
+            print oplist[1]
             
     # OR
     elif re.search(r'^[\t ]*or.*',instr):
@@ -349,7 +366,8 @@ def filter_line(instr):
             oplist.append(re.sub('[ ]','',m[1])) #operand 2
             oplist.append(re.sub('[ ]','',m[2])) #operand 3
             oplist.append(op[1])
-            print n[0]
+            oplist[1] = 2
+            print oplist[1]
 
     # XOR
     elif re.search(r'^[\t ]*xor.*',instr):
@@ -364,7 +382,8 @@ def filter_line(instr):
             oplist.append(re.sub('[ ]','',m[1])) #operand 2
             oplist.append(re.sub('[ ]','',m[2])) #operand 3
             oplist.append(op[1])
-            print n[0]
+            oplist[1] = 2
+            print oplist[1]
 
 
     # Condition testing and conditional move
@@ -382,7 +401,8 @@ def filter_line(instr):
             oplist.append(re.sub('[ ]','',m[1])) #operand 2
             oplist.append(re.sub('[ ]','',m[2])) #operand 3
             oplist.append(op[1])
-            print n[0]
+            oplist[1] = 2
+            print oplist[1]
 
     # MOVZ
     elif re.search(r'^[\t ]*\bmovz\b',instr):
@@ -397,7 +417,8 @@ def filter_line(instr):
             oplist.append(re.sub('[ ]','',m[1])) #operand 2
             oplist.append(re.sub('[ ]','',m[2])) #operand 3
             oplist.append(op[1])
-            print n[0]
+            oplist[1] = 2
+            print oplist[1]
             
 
     # SLT
@@ -413,7 +434,8 @@ def filter_line(instr):
             oplist.append(re.sub('[ ]','',m[1])) #operand 2
             oplist.append(re.sub('[ ]','',m[2])) #operand 3
             oplist.append(op[1])
-            print n[0]
+            oplist[1] = 2
+            print oplist[1]
 
 
     # Multiply and divide
@@ -430,7 +452,8 @@ def filter_line(instr):
             oplist.append(re.sub('[ ]','',m[0])) #operand 1
             oplist.append(re.sub('[ ]','',m[1])) #operand 2
             oplist.append(op[1])
-            print n[0]
+            oplist[1] = 2
+            print oplist[1]
 
     # MADD
     elif re.search(r'^[\t ]*madd.*',instr):
@@ -444,7 +467,8 @@ def filter_line(instr):
             oplist.append(re.sub('[ ]','',m[0])) #operand 1
             oplist.append(re.sub('[ ]','',m[1])) #operand 2
             oplist.append(op[1])
-            print n[0]
+            oplist[1] = 2
+            print oplist[1]
 
     # MSUB
     elif re.search(r'^[\t ]*msub.*',instr):
@@ -458,7 +482,8 @@ def filter_line(instr):
             oplist.append(re.sub('[ ]','',m[0])) #operand 1
             oplist.append(re.sub('[ ]','',m[1])) #operand 2
             oplist.append(op[1])
-            print n[0]
+            oplist[1] = 2
+            print oplist[1]
 
     # MULT, MULTU
     elif re.search(r'^[\t ]*mult.*',instr):
@@ -472,9 +497,10 @@ def filter_line(instr):
             oplist.append(re.sub('[ ]','',m[0])) #operand 1
             oplist.append(re.sub('[ ]','',m[1])) #operand 2
             oplist.append(op[1])
-            print n[0]
+            oplist[1] = 2
+            print oplist[1]
 
-    # MUL    (....change between elif statements of mult and mul causes errors....)
+    # MUL
     elif re.search(r'^[\t ]*\bmul\b',instr):
         oplist.append(Types.instruction)
         m = re.search(r'mul.*',instr)
@@ -487,7 +513,8 @@ def filter_line(instr):
             oplist.append(re.sub('[ ]','',m[1])) #operand 2
             oplist.append(re.sub('[ ]','',m[2])) #operand 3
             oplist.append(op[1])
-            print n[0]
+            oplist[1] = 2
+            print oplist[1]
 
 
     # Accumulator access
@@ -516,7 +543,8 @@ def filter_line(instr):
             oplist.append(n[0]) #opcode
             oplist.append(re.sub('[ ]','',m[0])) #operand 1
             oplist.append(op[1])
-            print n[0]
+            oplist[1] = 1
+            print oplist[1]
 
 
     # Jumps and branches
@@ -699,7 +727,8 @@ def filter_line(instr):
             oplist.append(re.sub('[ ]','',m[0])) #operand 1
             oplist.append(re.sub('[ ]','',m[1])) #operand 2
             oplist.append(op[1])
-            print "Jalr"
+            oplist[1] = 1
+            print oplist[1]
 
     # JR
     elif re.search(r'^[\t ]*\bjr\b',instr):
@@ -712,7 +741,8 @@ def filter_line(instr):
             oplist.append(n[0]) #opcode
             oplist.append(re.sub('[ ]','',m[0])) #operand 1
             oplist.append(op[1])
-            print "Jr"
+            oplist[1] = 1
+            print oplist[1]
 
 
     # Load and Store
@@ -731,7 +761,8 @@ def filter_line(instr):
             oplist.append(re.sub('[ ]','',mem[0])) #offset
             oplist.append(re.sub('[ ]','',mem[1])) #base
             oplist.append(op[1])
-            print "Lb"
+            oplist[1] = 0
+            print oplist[1]
 
     # LH, LHU
     elif re.search(r'^[\t ]*lh.*',instr):
@@ -747,7 +778,8 @@ def filter_line(instr):
             oplist.append(re.sub('[ ]','',mem[0])) #offset
             oplist.append(re.sub('[ ]','',mem[1])) #base
             oplist.append(op[1])
-            print "Lh"
+            oplist[1] = 0
+            print oplist[1]
 
     # LW, LWL, LWR
     elif re.search(r'^[\t ]*lw.*',instr):
@@ -763,7 +795,8 @@ def filter_line(instr):
             oplist.append(re.sub('[ ]','',mem[0])) #offset
             oplist.append(re.sub('[ ]','',mem[1])) #base
             oplist.append(op[1])
-            print "Lw"
+            oplist[1] = 0
+            print oplist[1]
 
     # SB
     elif re.search(r'^[\t ]*\bsb\b',instr):
@@ -779,7 +812,8 @@ def filter_line(instr):
             oplist.append(re.sub('[ ]','',mem[0])) #offset
             oplist.append(re.sub('[ ]','',mem[1])) #base
             oplist.append(op[1])
-            print "Sb"
+            oplist[1] = 0
+            print oplist[1]
 
     # SH
     elif re.search(r'^[\t ]*\bsh\b',instr):
@@ -795,7 +829,8 @@ def filter_line(instr):
             oplist.append(re.sub('[ ]','',mem[0])) #offset
             oplist.append(re.sub('[ ]','',mem[1])) #base
             oplist.append(op[1])
-            print "Sh"
+            oplist[1] = 0
+            print oplist[1]
 
     # SW
     elif re.search(r'^[\t ]*sw.*',instr):
@@ -811,7 +846,8 @@ def filter_line(instr):
             oplist.append(re.sub('[ ]','',mem[0])) #offset
             oplist.append(re.sub('[ ]','',mem[1])) #base
             oplist.append(op[1])
-            print "Sw"
+            oplist[1] = 0
+            print oplist[1]
 
     # ULW
     elif re.search(r'^[\t ]*\bulw\b',instr):
@@ -827,7 +863,8 @@ def filter_line(instr):
             oplist.append(re.sub('[ ]','',mem[0])) #offset
             oplist.append(re.sub('[ ]','',mem[1])) #base
             oplist.append(op[1])
-            print "Ulw"
+            oplist[1] = 0
+            print oplist[1]
 
     # USW
     elif re.search(r'^[\t ]*\busw\b',instr):
@@ -843,7 +880,8 @@ def filter_line(instr):
             oplist.append(re.sub('[ ]','',mem[0])) #offset
             oplist.append(re.sub('[ ]','',mem[1])) #base
             oplist.append(op[1])
-            print "Usw"
+            oplist[1] = 0
+            print oplist[1]
 
 
     # Atomic read-modify-write
@@ -862,7 +900,8 @@ def filter_line(instr):
             oplist.append(re.sub('[ ]','',mem[0])) #offset
             oplist.append(re.sub('[ ]','',mem[1])) #base
             oplist.append(op[1])
-            print "Ll"
+            oplist[1] = 0
+            print oplist[1]
 
     # SC
     elif re.search(r'^[\t ]*\bsc\b',instr):
@@ -878,11 +917,12 @@ def filter_line(instr):
             oplist.append(re.sub('[ ]','',mem[0])) #offset
             oplist.append(re.sub('[ ]','',mem[1])) #base
             oplist.append(op[1])
-            print "Sc"
+            oplist[1] = 0
+            print oplist[1]
 
 
     print oplist
 
 
-filter_main("assembly1")        # input file name
+filter_main("assembly")        # input file name
     
