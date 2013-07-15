@@ -2,38 +2,42 @@
 # http://students.cse.tamu.edu/wanglei/csce350/reference/assembler_dir.html
 
 
-# input        : mips assembly file
-# output        : 3D list
-# Description    : 
+# input          : mips assembly file
+# output         : 3D list
+# Description    : Read the input assembly file line by line and filter each line to store them in a list called 'oplist'. This filters comments, directives and
+#                  instructions instructions inside fucntions and labels along with the commnets attached to them. With that it adds the number of inputs for
+#                  each instruciton and adds the type of each instruction.
+
+
 
 import re
+
+
+# Open the corresponding assembly file given in input parameters
 
 def filter_main(filename):
     f=open(filename,'r')
 
     ln = []
-    for line in f:      # remove empty lines in file
+    for line in f:      # remove empty lines in the file
         if not line.strip():
             continue
         else:
             ln.append(line)
     f.close()
 
-    for i in ln:        # apply method
+    for i in ln:        # apply method to filter each line
         filter_line(i)
     
-# this function creates a list with opcode and operands for a given string insrtuction
-# input for this function is a string(line of the assembly code)
-# output is a list which holds the data of the sring
-# output[0]=input string
-# output[1]=type
-# output[2]=instr
+
+# Enumerate followings to identify easily
 
 class Types:
     function, label, comment, instruction, directive = range(5)
 
 
-# Separate comments in each line from the code
+# Separate comments that are with instructions in each line
+# Search for the lines containing '#' and return the text next to that and if no comment, return blank
 
 def separate_cmnt(line):
     op = []
@@ -49,24 +53,33 @@ def separate_cmnt(line):
     return op
 
 
-# separate offset and base of memory addresses in load and store
+
+# separate offset and base of memory addresses in load and store oprations
 
 def mem_address(addr):
     return re.split(r'\(|\)',addr)
 
 
+
 # Filtering each line
+# This function creates a list with opcode and operands for a given string insrtuction
+# Input for this function is a string (a line of the assembly code)
+# Output is a list which holds all the details of the sring
+# output[0]=input string
+# output[1]=number of inputs
+# output[2]=type
+# output[3]=opcode etc.
     
 def filter_line(instr):
     oplist = []
     oplist.append(instr)
     oplist.append([])
     
-    #this filter the comment lines
+    #this filters the comment lines
     if re.search(r'^[\t| ]*#',instr):
         oplist.append(Types.comment)
         
-    #filter directive
+    #filter directives
     elif re.search(r'^[\t| ]*[\.][a-z]*',instr):
         oplist.append(Types.directive)
         m=re.search(r'\.[a-z].*',instr)
@@ -84,7 +97,7 @@ def filter_line(instr):
 
     # Arithmatic operations
          
-    #filer add instruction (add,addu,addi,addui)
+    #filer ADD instruction (add,addu,addi,addui)
     if re.search(r'^[\t ]*add.*',instr):
         oplist.append(Types.instruction)
         m = re.search(r'add.*',instr)
@@ -97,7 +110,7 @@ def filter_line(instr):
             oplist.append(re.sub('[ ]','',m[1])) #operand 2
             oplist.append(re.sub('[ ]','',m[2])) #operand 3
             oplist.append(op[1])
-            oplist[1] = 2
+            oplist[1] = 2    # this is to indicate the number of inputs for this particular instruction
             print oplist[1]
             
             
@@ -118,7 +131,7 @@ def filter_line(instr):
             
     
     #filter move instruction (MOVE)
-    elif re.search(r'^[\t ]*\bmove\b',instr):
+    elif re.search(r'^[\t ]*\bmove\b',instr):  # set bounds to search for only the word 'move'
         oplist.append(Types.instruction)
         m = re.search(r'move.*',instr)
         if m is not None:
@@ -924,5 +937,5 @@ def filter_line(instr):
     print oplist
 
 
-filter_main("assembly")        # input file name
+filter_main("assembly")        # input assembly file to filter
     
