@@ -83,7 +83,8 @@ def count_inputs(instr):
     elif instr[1] == 2 :
         count == 2
 
-    return count
+    return count  # else return '0' (when instr[1] is empty)
+        
         
     
 
