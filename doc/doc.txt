@@ -1,0 +1,6 @@
+
+1. list format of line of code
+	
+	||string || dependancy || type || opcode || operands||...
+
+	

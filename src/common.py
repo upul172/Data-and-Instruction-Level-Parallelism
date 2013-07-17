@@ -152,12 +152,11 @@ OPCODE      = 3
 #depending on the type, there are specific attributes
 class dependancy_type:
     time_dependancy=False
-    name_dependancy=True
+    name_dependancy=False
     no_dependancy = True
     processor_dependancy=False
     def set_time_dep(self):
         no_dependancy=False
-        self.time=1
     def set_true_dep():
         no_dependancy==False
         time_dependancy=True

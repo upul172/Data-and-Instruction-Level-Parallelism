@@ -57,6 +57,7 @@ def bi_dependancy(current, prev):
         elif count_inputs(prev)==2:
             if prev[START_INSTR+1]==current[START_INSTR+2] or prev[START_INSTR+1]==current[START_INSTR+3]:
                 dep.set_true_dep()
+    return dep
 
 #this function is to identify loop a label is found.
 #array is the instruction array and index is the index of the corresponding loop
