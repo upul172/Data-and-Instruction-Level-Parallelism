@@ -4,17 +4,13 @@
 
 # input          : mips assembly file
 # output         : 3D list
-# Description    : Read the input assembly file line by line and filter each line to store them in a list called 'oplist'. This filters comments, directives and
-#                  instructions instructions inside fucntions and labels along with the commnets attached to them. With that it adds the number of inputs for
+# Description    : Read the input assembly file line by line and filter each line to store them in a list called 'oplist'. This filters comments, directives
+#                  and instructions inside fucntions and labels along with the commnets attached to them. With that it adds the number of inputs for
 #                  each instruciton and adds the type of each instruction.
 
 
 
 import re
-
-
-# Open the corresponding assembly file given in input parameters
-
     
 def filter_main(filename):
     f=open(filename,'r')
@@ -136,23 +132,8 @@ def filter_line(instr):
             oplist.append(re.sub('[ ]','',m[2])) #operand 3
             oplist.append(op[1])
             oplist[1] = 2
-        
-    #filer add instruction (add,addu,addi,addui)
-    elif re.search(r'^[\t ]*add.*',instr):
-        oplist.append(Types.instruction)
-        m = re.search(r'add.*',instr)
-        if m is not None:
-            n = m.group().partition('\t')
-            #tmp = re.sub('[ ]', ',', n[2])
-            m = n[2].split(',');
-            oplist.append(n[0]) #opcode
-            oplist.append(re.sub('[ ]','',m[0])) #operand 1
-            oplist.append(re.sub('[ ]','',m[1])) #operand 2
-            oplist.append(re.sub('[ ]','',m[2])) #operand 3
-            oplist.append(op[1])
-            oplist[1] = 2    # this is to indicate the number of inputs for this particular instruction
-            
-            
+
+                    
     #filter count leading instruction (CLO, CLZ)** no type (NJR for now)
     elif re.search(r'^[\t ]*cl.*',instr):
         oplist.append(Types.NJR)
@@ -1004,8 +985,10 @@ def filter_line(instr):
             print n[0]
 
 
+   
+
+    print oplist
 
     
 
 filter_main("assembly")        # input file name
-    
